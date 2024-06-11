@@ -101,9 +101,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+        <dependency>
+            <groupId>me.paulschwarz</groupId>
+            <artifactId>spring-dotenv</artifactId>
+            <version>2.5.4</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <defaultGoal>
+            clean package
+        </defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.asciidoctor</groupId>

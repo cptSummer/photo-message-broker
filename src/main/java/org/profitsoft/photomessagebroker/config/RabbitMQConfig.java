@@ -21,10 +21,10 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
     @Value("${spring.rabbitmq.queue}")
-    private static String queueName;
+    private String queueName;
 
     @Value("${spring.rabbitmq.exchange}")
-    private static String topicExchangeName;
+    private String topicExchangeName;
 
     @Bean
     public Queue queue() {
@@ -54,13 +54,6 @@ public class RabbitMQConfig {
         container.setQueueNames(queueName);
         container.setMessageListener(listenerAdapter);
         return container;
-    }
-
-    @Bean
-    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
-        RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
-        rabbitAdmin.declareQueue(queue());
-        return rabbitAdmin;
     }
 
     @Bean

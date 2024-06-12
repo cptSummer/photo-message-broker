@@ -9,4 +9,7 @@ public interface EmailRepository extends CrudRepository<EmailData, String> {
 
 
   ArrayList <EmailData> findAllByStatus(String status);
+
+
+
 }

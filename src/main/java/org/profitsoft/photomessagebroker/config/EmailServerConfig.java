@@ -33,7 +33,11 @@ public class EmailServerConfig {
 
     @Value("${spring.mail.properties.mail.smtp.starttls.enable}")
     private boolean startTlsEnable;
-
+    /**
+     * Configures and returns a JavaMailSender bean for sending emails.
+     *
+     * @return JavaMailSender bean
+     */
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
@@ -50,6 +54,5 @@ public class EmailServerConfig {
         props.put("mail.debug", "true");
         return mailSender;
     }
-
 
 }

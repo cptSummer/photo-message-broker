@@ -79,4 +79,21 @@ public void createUser(String username, String email, String password) {
    recipient.setName(username);
    rabbitTemplate.convertAndSend("user-registration-queue", recipient);
 }
+
+@SpringBootConfiguration
+public class RabbitMQConfig {
+
+   @Bean
+   public MessageConverter jsonMessageConverter() {
+      return new Jackson2JsonMessageConverter();
+   }
+
+   @Bean
+   public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+      RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+      rabbitTemplate.setMessageConverter(jsonMessageConverter());
+      return rabbitTemplate;
+   }
+}
+
 ````

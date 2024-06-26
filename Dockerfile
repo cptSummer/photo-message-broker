@@ -1,5 +1,7 @@
 FROM maven as build
 
+LABEL name="email-message-broker"
+
 WORKDIR /app
 
 COPY pom.xml .
